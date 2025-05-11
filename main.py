@@ -1,18 +1,43 @@
+# Проверка и исправление зависимостей перед импортом telegram
+try:
+    import fix_dependencies
+    fix_dependencies.fix_dependencies()
+except ImportError:
+    print("Warning: fix_dependencies.py not found, skipping dependency check")
+
 import os
 import logging
 import sys
 from typing import Dict, Any, Optional
 import asyncio
 
-from telegram import Update, Bot
-from telegram.ext import (
-    Updater,
-    CommandHandler,
-    CallbackQueryHandler,
-    MessageHandler,
-    Filters,
-    CallbackContext,
-)
+# Теперь импортируем telegram
+try:
+    from telegram import Update, Bot
+    from telegram.ext import (
+        Updater,
+        CommandHandler,
+        CallbackQueryHandler,
+        MessageHandler,
+        Filters,
+        CallbackContext,
+    )
+except ImportError as e:
+    print(f"Error importing telegram: {e}")
+    print("Attempting to install dependencies...")
+    import subprocess
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "urllib3==1.26.15", "six==1.16.0", "python-telegram-bot==13.10"])
+    
+    # Повторная попытка импорта
+    from telegram import Update, Bot
+    from telegram.ext import (
+        Updater,
+        CommandHandler,
+        CallbackQueryHandler,
+        MessageHandler,
+        Filters,
+        CallbackContext,
+    )
 
 from config.config import BOT_TOKEN, DATABASE_PATH, ADMIN_IDS
 from database.models import DatabaseManager
