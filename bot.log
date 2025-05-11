@@ -1,0 +1,56 @@
+2025-05-11 23:08:55,703 - apscheduler.scheduler - INFO - Scheduler started
+2025-05-11 23:09:00,108 - __main__ - INFO - Бот запущен. Нажмите Ctrl+C для остановки.
+2025-05-11 23:14:48,276 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-11 23:14:48,278 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-05-11 23:14:56,248 - telegram.ext.updater - WARNING - Exiting immediately!
+2025-05-11 23:14:59,050 - apscheduler.scheduler - INFO - Scheduler started
+2025-05-11 23:14:59,760 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-05-11 23:15:09,825 - __main__ - INFO - Бот полностью остановлен.
+2025-05-11 23:17:10,298 - apscheduler.scheduler - INFO - Scheduler started
+2025-05-11 23:17:11,015 - __main__ - INFO - Бот запущен. Нажмите Ctrl+C для остановки.
+2025-05-11 23:18:50,893 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-11 23:18:50,893 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-05-11 23:18:51,079 - telegram.ext.updater - WARNING - Exiting immediately!
+2025-05-11 23:19:39,959 - __main__ - INFO - Запуск бота...
+2025-05-11 23:19:39,959 - apscheduler.scheduler - INFO - Scheduler started
+2025-05-11 23:19:40,660 - __main__ - INFO - Бот запущен. Нажмите Ctrl+C для остановки.
+2025-05-11 23:21:36,034 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-11 23:21:36,036 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-05-11 23:21:45,824 - telegram.ext.updater - WARNING - Exiting immediately!
+2025-05-11 23:22:21,124 - __main__ - INFO - Запуск бота...
+2025-05-11 23:22:21,125 - apscheduler.scheduler - INFO - Scheduler started
+2025-05-11 23:22:21,810 - __main__ - INFO - Бот запущен. Нажмите Ctrl+C для остановки.
+2025-05-11 23:22:56,311 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-11 23:22:56,311 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-05-11 23:22:56,623 - telegram.ext.updater - WARNING - Exiting immediately!
+2025-05-11 23:25:13,940 - __main__ - INFO - Запуск бота...
+2025-05-11 23:25:13,940 - apscheduler.scheduler - INFO - Scheduler started
+2025-05-11 23:25:14,636 - __main__ - INFO - Бот запущен. Нажмите Ctrl+C для остановки.
+2025-05-11 23:25:34,701 - __main__ - ERROR - Произошла ошибка: object Message can't be used in 'await' expression
+Traceback (most recent call last):
+  File "C:\Users\Леха\Desktop\EarthVPN\venv\Lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Леха\Desktop\EarthVPN\venv\Lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Леха\Desktop\EarthVPN\bot\handlers\base_handlers.py", line 92, in start
+    loop.run_until_complete(self._start_async(update, context))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Леха\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\Леха\Desktop\EarthVPN\bot\handlers\base_handlers.py", line 72, in _start_async
+    await context.bot.send_message(
+    ...<4 lines>...
+    )
+TypeError: object Message can't be used in 'await' expression
+2025-05-11 23:29:05,555 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-11 23:29:05,555 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-05-11 23:29:07,508 - telegram.ext.updater - WARNING - Exiting immediately!
+2025-05-11 23:29:09,715 - __main__ - INFO - Запуск бота...
+2025-05-11 23:29:09,716 - apscheduler.scheduler - INFO - Scheduler started
+2025-05-11 23:29:10,412 - __main__ - INFO - Бот запущен. Нажмите Ctrl+C для остановки.
+2025-05-11 23:38:50,987 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2025-05-11 23:38:50,988 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-05-11 23:38:58,219 - telegram.ext.updater - WARNING - Exiting immediately!
