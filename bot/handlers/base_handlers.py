@@ -268,8 +268,20 @@ class BaseHandlers:
         
         await self.db_manager.update_user_activity(user.id)
 
-    async def support(self, update: Update, context: CallbackContext) -> None:
+    def support(self, update: Update, context: CallbackContext) -> None:
         """Обработчик раздела 'Поддержка'"""
+        # Получаем или создаем цикл событий
+        try:
+            loop = asyncio.get_event_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
+        # Запускаем асинхронную функцию
+        loop.run_until_complete(self._support_async(update, context))
+        
+    async def _support_async(self, update: Update, context: CallbackContext) -> None:
+        """Асинхронная реализация обработчика раздела 'Поддержка'"""
         user = update.effective_user
         
         await self.send_message_and_save_id(
@@ -281,8 +293,20 @@ class BaseHandlers:
         
         await self.db_manager.update_user_activity(user.id)
 
-    async def profile(self, update: Update, context: CallbackContext) -> None:
+    def profile(self, update: Update, context: CallbackContext) -> None:
         """Обработчик личного кабинета пользователя"""
+        # Получаем или создаем цикл событий
+        try:
+            loop = asyncio.get_event_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
+        # Запускаем асинхронную функцию
+        loop.run_until_complete(self._profile_async(update, context))
+        
+    async def _profile_async(self, update: Update, context: CallbackContext) -> None:
+        """Асинхронная реализация обработчика личного кабинета пользователя"""
         user = update.effective_user
         
         # Получаем активную подписку пользователя
@@ -317,8 +341,20 @@ class BaseHandlers:
         
         await self.db_manager.update_user_activity(user.id)
 
-    async def payment(self, update: Update, context: CallbackContext) -> None:
+    def payment(self, update: Update, context: CallbackContext) -> None:
         """Обработчик оплаты"""
+        # Получаем или создаем цикл событий
+        try:
+            loop = asyncio.get_event_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
+        # Запускаем асинхронную функцию
+        loop.run_until_complete(self._payment_async(update, context))
+        
+    async def _payment_async(self, update: Update, context: CallbackContext) -> None:
+        """Асинхронная реализация обработчика оплаты"""
         query = update.callback_query
         tariff_id = int(query.data.split('_')[1])
         user = update.effective_user
@@ -332,8 +368,20 @@ class BaseHandlers:
         
         await self.db_manager.update_user_activity(user.id)
 
-    async def process_payment_method(self, update: Update, context: CallbackContext) -> None:
+    def process_payment_method(self, update: Update, context: CallbackContext) -> None:
         """Обработчик выбора способа оплаты"""
+        # Получаем или создаем цикл событий
+        try:
+            loop = asyncio.get_event_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
+        # Запускаем асинхронную функцию
+        loop.run_until_complete(self._process_payment_method_async(update, context))
+        
+    async def _process_payment_method_async(self, update: Update, context: CallbackContext) -> None:
+        """Асинхронная реализация обработчика выбора способа оплаты"""
         query = update.callback_query
         parts = query.data.split('_')
         method_id = parts[2]
@@ -387,8 +435,20 @@ class BaseHandlers:
         
         await self.db_manager.update_user_activity(user.id)
 
-    async def check_payment(self, update: Update, context: CallbackContext) -> None:
+    def check_payment(self, update: Update, context: CallbackContext) -> None:
         """Обработчик проверки статуса платежа"""
+        # Получаем или создаем цикл событий
+        try:
+            loop = asyncio.get_event_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
+        # Запускаем асинхронную функцию
+        loop.run_until_complete(self._check_payment_async(update, context))
+        
+    async def _check_payment_async(self, update: Update, context: CallbackContext) -> None:
+        """Асинхронная реализация обработчика проверки статуса платежа"""
         query = update.callback_query
         payment_id = int(query.data.split('_')[2])
         user = update.effective_user
@@ -479,8 +539,20 @@ class BaseHandlers:
         await self.db_manager.save_config(user_id, "openvpn", openvpn_config)
         await self.db_manager.save_config(user_id, "wireguard", wireguard_config)
 
-    async def configs(self, update: Update, context: CallbackContext) -> None:
+    def configs(self, update: Update, context: CallbackContext) -> None:
         """Обработчик запроса конфигурационных файлов"""
+        # Получаем или создаем цикл событий
+        try:
+            loop = asyncio.get_event_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
+        # Запускаем асинхронную функцию
+        loop.run_until_complete(self._configs_async(update, context))
+        
+    async def _configs_async(self, update: Update, context: CallbackContext) -> None:
+        """Асинхронная реализация обработчика запроса конфигурационных файлов"""
         user = update.effective_user
         
         await self.send_message_and_save_id(
@@ -491,9 +563,67 @@ class BaseHandlers:
         )
         
         await self.db_manager.update_user_activity(user.id)
+        
+    def payment_history(self, update: Update, context: CallbackContext) -> None:
+        """Обработчик истории платежей"""
+        # Получаем или создаем цикл событий
+        try:
+            loop = asyncio.get_event_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
+        # Запускаем асинхронную функцию
+        loop.run_until_complete(self._payment_history_async(update, context))
+        
+    async def _payment_history_async(self, update: Update, context: CallbackContext) -> None:
+        """Асинхронная реализация обработчика истории платежей"""
+        user = update.effective_user
+        
+        # Получаем все платежи пользователя
+        payments = await self.db_manager.get_user_payments(user.id)
+        
+        if payments:
+            # Формируем текст с историей платежей
+            text = "<b>История платежей:</b>\n\n"
+            
+            for payment in payments:
+                tariff = next((t for t in TARIFFS if t["id"] == payment["tariff_id"]), None)
+                tariff_name = tariff["name"] if tariff else "Неизвестный тариф"
+                
+                date = datetime.datetime.strptime(payment["created_at"], "%Y-%m-%d %H:%M:%S").strftime("%d.%m.%Y %H:%M")
+                
+                text += f"📅 <b>{date}</b>\n"
+                text += f"🏷 Тариф: {tariff_name}\n"
+                text += f"💰 Сумма: {payment['amount']} руб.\n"
+                text += f"💳 Способ: {payment['payment_method']}\n"
+                text += f"✅ Статус: {payment['status']}\n\n"
+        else:
+            text = "У вас пока нет истории платежей"
+        
+        await self.send_message_and_save_id(
+            update=update,
+            context=context,
+            text=text,
+            keyboard=Keyboards.payment_history_keyboard()
+        )
+        
+        await self.db_manager.update_user_activity(user.id)
 
-    async def download_config(self, update: Update, context: CallbackContext) -> None:
+    def download_config(self, update: Update, context: CallbackContext) -> None:
         """Обработчик скачивания конфигурационного файла"""
+        # Получаем или создаем цикл событий
+        try:
+            loop = asyncio.get_event_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
+        # Запускаем асинхронную функцию
+        loop.run_until_complete(self._download_config_async(update, context))
+        
+    async def _download_config_async(self, update: Update, context: CallbackContext) -> None:
+        """Асинхронная реализация обработчика скачивания конфигурационного файла"""
         query = update.callback_query
         config_type = query.data.split('_')[1]
         user = update.effective_user
@@ -514,7 +644,7 @@ class BaseHandlers:
                 config_text = "Неподдерживаемый тип конфигурации"
             
             # Отправляем файл пользователю
-            await context.bot.send_document(
+            context.bot.send_document(
                 chat_id=user.id,
                 document=config_text.encode(),
                 filename=f"earthvpn_{config_type}.conf",
@@ -569,38 +699,4 @@ PublicKey = {config_data.get('public_key', '')}
 Endpoint = {config_data.get('endpoint', 'wg.earthvpn.com:51820')}
 AllowedIPs = {config_data.get('allowed_ips', '0.0.0.0/0, ::/0')}
 PersistentKeepalive = 25
-"""
-
-    async def payment_history(self, update: Update, context: CallbackContext) -> None:
-        """Обработчик истории платежей"""
-        user = update.effective_user
-        
-        # Получаем все платежи пользователя
-        payments = await self.db_manager.get_user_payments(user.id)
-        
-        if payments:
-            # Формируем текст с историей платежей
-            text = "<b>История платежей:</b>\n\n"
-            
-            for payment in payments:
-                tariff = next((t for t in TARIFFS if t["id"] == payment["tariff_id"]), None)
-                tariff_name = tariff["name"] if tariff else "Неизвестный тариф"
-                
-                date = datetime.datetime.strptime(payment["created_at"], "%Y-%m-%d %H:%M:%S").strftime("%d.%m.%Y %H:%M")
-                
-                text += f"📅 <b>{date}</b>\n"
-                text += f"🏷 Тариф: {tariff_name}\n"
-                text += f"💰 Сумма: {payment['amount']} руб.\n"
-                text += f"💳 Способ: {payment['payment_method']}\n"
-                text += f"✅ Статус: {payment['status']}\n\n"
-        else:
-            text = "У вас пока нет истории платежей"
-        
-        await self.send_message_and_save_id(
-            update=update,
-            context=context,
-            text=text,
-            keyboard=Keyboards.payment_history_keyboard()
-        )
-        
-        await self.db_manager.update_user_activity(user.id) 
+""" 
